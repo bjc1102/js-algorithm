@@ -1,0 +1,32 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>출력결과</title>
+</head>
+<body>
+<script>
+    function solution(s){
+        let answer="";
+        // answer = s.toUpperCase()
+        for(let char of s) {
+            // 아스키 변환
+            // A ~ Z
+            // 대문자 65 ~ 90
+            // 소문자 97 ~ 122
+            // 소 -> 대를 만들려면 32를 빼면 된다
+            let num = char.charCodeAt()
+            if(num >= 97 && num <= 122) answer+= String.fromCharCode(num-32)
+            else answer += char
+        }
+
+
+
+        return answer;
+
+    }
+
+    let str="ItisTimeToStudy";
+    console.log("정답은 : ",solution(str));
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>출력결과</title>
+</head>
+<body>
+<script>
+    function solution(s){
+        let answer;
+        const len =  s.length
+        const mid = Math.floor(len / 2)
+        // 홀수는 floor를 쓰면 중간
+        // 짝수는 한칸 앞을 가리킨다
+
+
+        // substring의 end는 마지막위치를 포함하지 않기 때문에 마지막 위치를 다음 위치로 출력해야한다
+        // start ~ end
+        if(len % 2 === 1) answer = s.substring(mid, mid+1) // mid만 짜르기
+        else answer = s.substring(mid-1, mid+1) // mid 전까지만 짜르기
+
+        //substr은 해당 인덱스부터 갯수로 뽑는다
+        if(len % 2 === 1) answer = s.substr(mid, 1) // mid만 짜르기
+        else answer = s.substr(mid-1, 2) // mid 전까지만 짜르기
+
+        // if(len % 2 === 0) { //짝수라면
+        //     answer = s[index] + s[index+ 1]
+        // }
+        // else answer = s[Math.ceil(index)]
+
+        return answer;
+    }
+    console.log(solution("length"));
+</script>
+</body>
+</html>
