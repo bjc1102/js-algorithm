@@ -1,0 +1,26 @@
+<html>
+<head>
+  <meta charSet="UTF-8">
+  <title>출력결과</title>
+</head>
+<body>
+<script>
+  function solution(arr) {
+    // 내가 혼자 풀었을 떄 max란 값을 설정할 수 있었는가?
+    // 내 앞사람보다 크면 보인다.
+    let answer = 1, max = arr[0];
+    const len = arr.length
+    for(let i = 1; i < len; i++) {
+      if(arr[i] > max) {
+        max = arr[i]
+        answer++
+      }
+    }
+    return answer;
+  }
+
+  let arr = [130, 135, 148, 140, 145, 150, 150, 153];
+  console.log(solution(arr));
+</script>
+</body>
+</html>
