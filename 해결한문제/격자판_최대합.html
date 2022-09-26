@@ -1,0 +1,45 @@
+<html>
+<head>
+    <meta charSet="UTF-8">
+    <title>출력결과</title>
+</head>
+<body>
+<script>
+    function solution(arr) {
+        let answer = Number.MIN_SAFE_INTEGER;
+        const len = arr.length;
+        let sum1 = sum2 = 0
+        //행의 합과 열의 합을 따로 정의
+        for(let i = 0; i < len; i++) {
+            // 문제를 잘못 이해했는데 행, 열, 대각선끼리 더해서 가장 큰 값을 찾는다.
+            // 처음 이해한게 맞았다...
+            sum1 = sum2 = sum3 = 0
+            for(let k = 0; k < len; k++) {
+                sum1 += arr[i][k] // 행
+                sum2 += arr[k][i] // 열
+            }
+            answer = Math.max(answer, sum1, sum2)
+        }
+
+        //대각선
+        sum1 = sum2 = 0
+        for(let i = 0; i < len; i++) {
+            sum1 += arr[i][i]
+            sum2 += arr[i][len - i - 1]
+        }
+        answer = Math.max(answer, sum1, sum2)
+
+        //하나의 for문으로 출력하려고 계속 대각선 조건을 찾다보니 오래 걸렸다 차라리 제대로 구분하고 명확하게 그림을 그리면서 풀어보는게 훨씬 쉬웠을거같다
+
+        return answer
+    }
+
+    let arr = [[10, 13, 10, 12, 15],
+        [12, 39, 30, 23, 11],
+        [11, 25, 50, 53, 15],
+        [19, 27, 29, 37, 27],
+        [19, 13, 30, 13, 19]];
+    console.log(solution(arr));
+</script>
+</body>
+</html>
