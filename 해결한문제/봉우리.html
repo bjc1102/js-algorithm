@@ -1,0 +1,44 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>출력결과</title>
+</head>
+<body>
+<script>
+  function solution(arr){
+    let answer = 0;
+    const len = arr.length
+    const dx = [-1, 0, 1, 0]
+    const dy = [0, 1, 0, -1]
+    const dlen = dx.length
+    // index에 더하거나 빼면 12 3시 6시 9시순으로 돌아가면서 볼 수 있다.
+    // 상하좌우 비교를 위해 두개의 배열을 만든다, 아니면 if를 다 쓰면 된다
+
+    for(let i = 0; i < len; i++) {
+      for(let j = 0; j < len; j++) {
+        //모든 배열 순회
+        let top = true
+        for(let k = 0; k < dlen; k++) {
+          let nx = i + dx[k] // 행 좌표
+          let ny = j + dy[k] // 열 좌표
+          if(nx >= 0 && nx < len && ny >= 0 && ny < len) //바깥에 나갔는지 아닌지
+            if(arr[nx][ny] >= arr[i][j]) {
+              top = false
+              break;
+            }
+        }
+        if(top) answer++
+      }
+    }
+    return answer;
+  }
+
+  let arr=[[5, 3, 7, 2, 3],
+    [3, 7, 1, 6, 1],
+    [7, 2, 5, 3, 4],
+    [4, 3, 6, 4, 1],
+    [8, 7, 3, 5, 2]];
+  console.log(solution(arr));
+</script>
+</body>
+</html>
