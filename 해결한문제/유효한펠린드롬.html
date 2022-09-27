@@ -1,0 +1,22 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>출력결과</title>
+</head>
+<body>
+<script>
+  function solution(s){
+    let answer="YES";
+    //회문 검사시 알파벳만 출력해야한다
+    let replace = s.toLowerCase().replace(/[^a-z]/g, "") // 소문자로 치환하고 바꿔버리면 된다...
+    if(replace !== replace.split("").reverse().join("")) return "NO"
+
+
+    return answer;
+  }
+
+  let str="ound7, time: study; Yduts; emit, 7Dnuo";
+  console.log(solution(str));
+</script>
+</body>
+</html>

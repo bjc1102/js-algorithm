@@ -1,0 +1,23 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>출력결과</title>
+</head>
+<body>
+<script>
+  function solution(str){
+    let answer="";
+    // answer = str.toLowerCase().replace(/[a-z]/g, "")
+    for(const char of str) {
+      //isNaN은 숫자가 아니냐를 묻고 문자면 참 숫자면 거짓이 나온다
+      if(!isNaN(char)) answer += char
+    }
+
+    return parseInt(answer);
+  }
+
+  let str="g0en2T0s8eSoft";
+  console.log(solution(str));
+</script>
+</body>
+</html>

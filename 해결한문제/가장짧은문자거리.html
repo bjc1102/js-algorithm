@@ -1,0 +1,42 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>출력결과</title>
+</head>
+<body>
+<script>
+    function solution(s, t){
+        let answer=[];
+        const length = s.length
+        for(let i = 0; i < length; i++) {
+            const front = s.split("").slice(0,i).reverse()
+            const back = s.split("").slice(i)
+            let fMin = Number.MAX_SAFE_INTEGER
+            let bMin = Number.MAX_SAFE_INTEGER
+
+            console.log("front : ", front)
+            console.log("back : ", back)
+
+            for(let j = 0; j < front.length; j++) {
+                if(front[j] === t) {
+                    fMin = j + 1
+                    break;
+                }
+            }
+            for(let j = 0; j < back.length; j++) {
+                if(back[j] === t) {
+                    bMin = j
+                    break;
+                }
+            }
+            answer.push(Math.min(fMin, bMin))
+        }
+
+        return answer;
+    }
+
+    let str="teachermode";
+    console.log(solution(str, 'e'));
+</script>
+</body>
+</html>
