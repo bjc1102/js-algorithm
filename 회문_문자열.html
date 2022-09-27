@@ -1,0 +1,38 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>출력결과</title>
+</head>
+<body>
+<script>
+    function solution(s){
+        let answer="YES";
+        s = s.toLowerCase()
+        // 문제풀이 1
+        // s.reverse()는 문자열 내장 함수가 아니라 배열 내장 함수이다..
+        if(s !== s.split("").reverse().join("")) answer = "NO"
+
+        // 문제풀이 2
+        // 짝수라면 딱 절반만 돌고 대응되는 반대편이랑 비교하면 된다
+        // 홀수라면 절반 바로 전까지만 돌고 비교하면 된다
+        //Math floor도 있고 parseInt도 있다
+        let answer2 = "YES"
+        const length = s.length
+        for(let i = 0; i < Math.floor(length / 2); i++) {
+            if(s[i] !== s[length - 1 - i]) {
+                answer2 = "NO"
+                break;
+            }
+        }
+
+        return `${answer}, ${answer2}`;
+    }
+
+    let str="g1Ao1G";
+    console.log(solution(str));
+</script>
+</body>
+</html>
+
+
+
