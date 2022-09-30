@@ -1,10 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>출력결과</title>
 </head>
 <body>
+<script>
+    function solution(s){
+        let answer="";
+        // 문제를 잘못 이해했다.
+        // 문제를 잘 읽자!
+        // 연속되는 숫자의 경우만 체크해서 다음에 이어주는거지 중복되는 문자를 모두 찾는게 아니다...
+        let count = 1;
+        s+= " " // 빈공간 -> 다음걸 비교해야 하기 때문이다.
+        for(let i = 0; i < s.length - 1; i++) {
+            if(s[i] === s[i+1]) count++
+            else {
+                //조건 분개가 조금 이상하게 된거같다
+                // if else로 나누다보니 중첩되어 이상하게 된듯
+                answer += s[i];
+                if(count > 1) answer += String(count)
+                count = 1
+            }
+        }
 
+        return answer;
+    }
+
+    let str="KKHSSSSSSSE";
+    console.log(solution(str));
+</script>
 </body>
 </html>
