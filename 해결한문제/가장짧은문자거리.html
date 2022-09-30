@@ -8,30 +8,43 @@
     function solution(s, t){
         let answer=[];
         const length = s.length
-        for(let i = 0; i < length; i++) {
-            const front = s.split("").slice(0,i).reverse()
-            const back = s.split("").slice(i)
-            let fMin = Number.MAX_SAFE_INTEGER
-            let bMin = Number.MAX_SAFE_INTEGER
-
-            console.log("front : ", front)
-            console.log("back : ", back)
-
-            for(let j = 0; j < front.length; j++) {
-                if(front[j] === t) {
-                    fMin = j + 1
-                    break;
-                }
-            }
-            for(let j = 0; j < back.length; j++) {
-                if(back[j] === t) {
-                    bMin = j
-                    break;
-                }
-            }
-            answer.push(Math.min(fMin, bMin))
+        let point = 1000
+        // for문이 두번 돌면 된다.. 처음부터 끝까지 끝부터 다시 처음까지..
+        // 초기에 큰 숫자로 초기화 시킨 다음 검색하려는 문자가 아니면 ++하고 e를 만나면 초기화한다
+        for(let x of s) {
+            if(x === t) point = 0;
+            else point++
+            answer.push(point)
         }
 
+        point = 1000
+
+        for(let i = length - 1; i > -1; i--) {
+            if(s[i] === t) point = 0
+            else point++
+            answer[i] = Math.min(answer[i], point)
+        }
+        // 원소마다 앞뒤로 반복문을 돌려 구함
+        // for(let i = 0; i < length; i++) {
+        //     const front = s.split("").slice(0,i).reverse()
+        //     const back = s.split("").slice(i)
+        //     let fMin = Number.MAX_SAFE_INTEGER
+        //     let bMin = Number.MAX_SAFE_INTEGER
+        //
+        //     for(let j = 0; j < front.length; j++) {
+        //         if(front[j] === t) {
+        //             fMin = j + 1
+        //             break;
+        //         }
+        //     }
+        //     for(let j = 0; j < back.length; j++) {
+        //         if(back[j] === t) {
+        //             bMin = j
+        //             break;
+        //         }
+        //     }
+        //     answer.push(Math.min(fMin, bMin))
+        // }
         return answer;
     }
 
