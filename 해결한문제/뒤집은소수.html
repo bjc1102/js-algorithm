@@ -1,0 +1,86 @@
+<!--<html>-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>출력결과</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<script>-->
+<!--    function isPrime(num){-->
+<!--        if(num===1) return false;-->
+<!--        for(let i=2; i<=parseInt(Math.sqrt(num)); i++){-->
+<!--            if(num%i===0) return false;-->
+<!--        }-->
+<!--        return true;-->
+<!--    }-->
+<!--    function solution(arr){-->
+<!--        let answer=[];-->
+<!--        for(let x of arr){-->
+<!--            let res=0;-->
+<!--            while(x){-->
+<!--                let t=x%10;-->
+<!--                res=res*10+t;-->
+<!--                x=parseInt(x/10);-->
+<!--            }-->
+<!--            if(isPrime(res)) answer.push(res);-->
+<!--        }-->
+<!--        return answer;-->
+<!--    }-->
+
+<!--    let arr=[32, 55, 62, 20, 250, 370, 200, 30, 100];-->
+<!--    console.log(solution(arr));-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>출력결과</title>
+</head>
+<body>
+<script>
+    function isPrime (number) {
+        // 소수 판별하는 함수는 잘 알아둑
+        if(number === 1) return false
+        //약수 중 가장 큰것은 자기 자신의 절반임.
+        // 하나가 확인되면 이미 반대편도 확인이 되는 부분 반대편은 절바 이상 갈 필요도 없고 이미 앞에서 확인가능
+        // 정리하자면 소수를 찾기 위해 절반만 돌아도되고 제곱근까지만 돌아도 된다
+        for(let i = 2; i <= Math.floor(Math.sqrt(number)); i++) {
+
+            // 나눗셈 위치에 주의할 것
+            // 큰수를 작은수로 나눈다
+            if(number % i === 0) return false
+        }
+        return true
+    }
+    function solution(arr){
+        let answer=[];
+        //숫자 자체를 몫과 나머지로 뒤집기
+        for(let x of arr) {
+            //뒤집고 저장하는 temp
+            let result = 0
+            while (x) {
+                // 자릿수 남기기
+                const p = x % 10
+                // 한자리 밀고 이번에 들어오는 숫자 더하기
+                result = result * 10 + p
+                x = Math.floor(x / 10)
+            }
+            if(isPrime(result)) answer.push(result)
+        }
+
+        // 문자열로 만들어뒤집고 계산
+        // for(const num of arr) {
+        //     const reverse = Number(String(num).split("").reverse().join(""))
+        //     if(isPrime(reverse)) answer.push(reverse)
+        // }
+        return answer;
+    }
+
+    let arr=[32, 55, 62, 20, 250, 370, 200, 30, 100];
+    console.log(solution(arr));
+</script>
+</body>
+</html>
