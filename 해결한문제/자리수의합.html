@@ -1,0 +1,81 @@
+<!--<html>-->
+<!--<head>-->
+<!--  <meta charset="UTF-8">-->
+<!--  <title>출력결과</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<script>-->
+<!--  function solution(n, arr){-->
+<!--    let answer, max=Number.MIN_SAFE_INTEGER;-->
+<!--    for(let x of arr){-->
+<!--      let sum=0, tmp=x;-->
+<!--      while(tmp){-->
+<!--        sum+=(tmp%10);-->
+<!--        tmp=Math.floor(tmp/10);-->
+<!--      }-->
+<!--      if(sum>max){-->
+<!--        max=sum;-->
+<!--        answer=x;-->
+<!--      }-->
+<!--      else if(sum===max){-->
+<!--        if(x>answer) answer=x;-->
+<!--      }-->
+<!--    }-->
+<!--    return answer;-->
+<!--  }-->
+
+<!--  let arr=[128, 460, 603, 40, 521, 137, 123];-->
+<!--  console.log(solution(7, arr));-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>출력결과</title>
+</head>
+<body>
+<script>
+  function solution(n, arr){
+    let answer, max=Number.MIN_SAFE_INTEGER;
+
+    for (const x of arr) {
+      // 숫자 자체를 뜯어내서 누적하기
+      let sum = 0, tmp = x;
+       // 계속 나머지로 나누면 된다.
+      while(tmp) {
+        sum += (tmp % 10)
+        tmp = Math.floor(tmp / 10)
+      }
+      if(sum > max) {
+        max = sum
+        answer = x
+      }
+    }
+
+    // 내 풀이
+    // arr.forEach((v,index) => {
+    //   //숫자 자리수 구하기
+    //   const num = Number(String(v).split("").reduce((a,b) => parseInt(a) + parseInt(b)))
+    //
+    //   // 최댓값 찾기
+    //   // 사실 자릿수를 구하는건 크게 문제가 아닌데 조건을 설정할때가 더 신경쓸게 많은거같다.
+    //   if(max < num) {
+    //     max = num
+    //     answer = arr[index]
+    //   }
+    //   else if (max===num) {
+    //    answer = Math.max(answer, arr[index])
+    //   }
+    // })
+
+    return answer;
+  }
+
+  let arr=[108, 260, 603, 702, 111, 111, 123];
+  console.log(solution(7, arr));
+</script>
+</body>
