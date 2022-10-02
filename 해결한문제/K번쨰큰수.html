@@ -1,0 +1,31 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>출력결과</title>
+</head>
+<body>
+<script>
+  function solution(n, k, card){
+    let answer;
+    let tmp = new Set()
+    const len = card.length
+    //모든 수의 합을 구해서 정렬시킨 다음에 인덱스로 큰값을 찾으면 될듯?
+    // 중복은 안된다는 것을 못봤따.
+    for(let i = 0; i < len - 2; i++) {
+      for(let j = i + 1; j < len - 1; j++) {
+        for (let k = j + 1; k < len; k++) {
+          tmp.add(card[i] + card[j] + card[k])
+        }
+      }
+    }
+    console.log([...tmp].sort((a,b) => b-a))
+    answer = [...tmp].sort((a,b) => b-a)[k-1]
+
+    return answer;
+  }
+
+  let arr=[13, 15, 34, 23, 45, 65, 33, 11, 26, 42];
+  console.log(solution(10, 3, arr));
+</script>
+</body>
+</html>
