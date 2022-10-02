@@ -1,0 +1,72 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>출력결과</title>
+</head>
+<body>
+<script>
+    function solution(m, product){
+        /*
+        m은 예산 , product는 학생의 상품
+        보통 가장 작은 단위부터 거슬러준다
+        최대한 많은 학생에게 사주기 위함...
+
+        하지만 할인을 생각해봐야함
+
+        모든 경우를 할인해보고 가장 많이 살 수 있는 경우를 선택하면 되지 않을까?
+        => 그게 그리디다.
+
+
+        회고
+        접근 방식이 같았으니 크게 문제가 아닐거같았는데 정렬하는 곳이나 조건을 찾는 방법이라던지 생각보다 많이 차이가 있었고 for문안에서
+        sort를 도는 건 매우 아쉬운 부분이었던더 같다
+        */
+        let answer=0;
+        const len = product.length
+        product.sort((a,b) => (a[0]+a[1] - (b[0]+b[1]))) // 그냥 원본 배열 자체를 정렬시켜버림
+
+        for(let i = 0; i < len; i++) {
+            let money = m-(product[i][0] / 2 + product[i][1]) // 할인 받는 상품은 무조건 들어간다고 생각할 수 있다.
+            //money는 남은 예산
+            let cnt = 1;
+            for(let j = 0; j < len; j++) {
+                if(j !== i && (product[j][0] + product[j][1]) > money) break;
+                if(i !== j && (product[j][0] + product[j][1]) <= money) {
+                    // 이미 할인되어 들어간 상품은 제외해야하고 money로 상품을 살 수 있어야 한다
+                    money -= (product[j][0] + product[j][1])
+                    cnt++
+                }
+            }
+            answer = Math.max(answer, cnt)
+        }
+
+        /* 내가 푼 풀이 */
+        // const len = product.length
+        // const cost_arr = product.map(v => {
+        //     return v[0] + v[1]
+        // })
+        //
+        // for(let i = 0; i < len; i++) {
+        //     let cost = 0;
+        //     let count = 0
+        //     let costArr = [...cost_arr]
+        //     costArr[i] = (product[i][0] / 2) + product[i][1]
+        //     costArr.sort((a,b) => a-b)
+        //     for(let j = 0; j < len; j++) {
+        //         if(cost > m) {
+        //             count = j
+        //             break;
+        //         }
+        //         cost += costArr[j]
+        //         count = j
+        //     }
+        //     answer = Math.max(answer, count)
+        // }
+        return answer;
+    }
+
+    let arr=[[6, 6], [2, 2], [4, 3], [4, 5], [10, 3]];
+    console.log(solution(28, arr));
+</script>
+</body>
+</html>
