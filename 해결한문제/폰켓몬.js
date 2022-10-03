@@ -3,6 +3,8 @@
 // [3, 3, 3, 2, 2, 2]
 
 function solution(nums) {
+    // Set자료구조는 중복을 없앤다는 것을 명심할 것.
+
     let answer = 0;
     const len = nums.length
     // 많은 종류의 포켓몬으로 만들어야 한다
