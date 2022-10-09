@@ -44,7 +44,7 @@ function solution(board, moves) {
           answer += 2;
           stack.pop();
         } else stack.push(tmp);
-        break;
+        break; // 하나만 꺼내야하기 때문에 break가 필수이다
       }
     }
   });
