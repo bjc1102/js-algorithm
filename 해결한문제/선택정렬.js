@@ -12,6 +12,8 @@ function solution(arr) {
     for (let j = i; j < arr.length; j++) {
       if (arr[idx] > arr[j]) idx = j; // 자리바꾸기
     }
+
+    // 이렇게 하면 아래와 똑같이 자리가 바뀐다 최신 js 문법이라고 한다
     [arr[i], arr[idx]] = [arr[idx], arr[i]];
     // let tmp = arr[i];
     // arr[i] = arr[idx];
