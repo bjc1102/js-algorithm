@@ -11,6 +11,7 @@ function solution(arr) {
     let tmp = arr[i];
     let j = i - 1;
     for (j; j >= 0; j--) {
+      // - 값으로 넘어가진 않는다
       if (arr[j] > tmp) {
         // arr[j]가 tmp보다 크면 다음 인덱스로 복사
         // 복사시키면서 정렬해나간다
