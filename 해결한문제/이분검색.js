@@ -6,7 +6,7 @@ function solution(target, arr) {
     시간복잡도가 logN이다
     
     rt + lt를 실수로 rt - lt로 구현했고
-    mid를 제외해야한다는 것을 놓쳐서 무한루프 걸렸다
+    mid를 case에 따라 제외해야한다는 것을 놓쳐서 무한루프 걸렸다
   */
   let answer; // 몇번쨰 위치에 있는지 계산하기
 
