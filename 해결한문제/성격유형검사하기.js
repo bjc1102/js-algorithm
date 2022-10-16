@@ -18,6 +18,13 @@ function solution(survey, choices) {
   //     ["N", 0],
   //   ]);
 
+  /*
+  너무 어렵게 푼거같다
+  1~7의 경우를 나누는 부분에서도 나눈나머지 몫으로 계산해서 그 부분이 틀렸는지 아닌지 검증도 하고 어차피 덧셈을 했을 때 위 아래 똑같은 수식이 나왔따
+  접근방식은 틀리지 않은거 같아 js로 구현하는 것에만 조금 더 집중하면 좋을거같다
+  
+  */
+
   const results = new Map();
   [("R", "T", "C", "F", "J", "M", "A", "N")].forEach((item) =>
     results.set(item, 0)
