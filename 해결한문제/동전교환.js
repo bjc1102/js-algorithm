@@ -25,6 +25,7 @@ function solution(m, arr) {
   // sum에 현재 값이 들어갈 수 없다면 다음 원소로 하나씩 증가시키면서 탐색
   // 그런데 들어오는 m 값을  변경했더니 call stack이 초과됐다
   // if (check > m) DFS(L + 1, sum); 여기서 값이 무한대로 들어가게 됐다
+  // 15, [1, 5, 12] 그리디의 반례인데  내가 DFS처럼 보이는 그리디로 푼 방법이다
 
   //   let counter = 0; // 처음 동전하나는 무조건 들어간다
   //   const index = arr.length - 1; //2
