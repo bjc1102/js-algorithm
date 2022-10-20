@@ -10,6 +10,7 @@ function solution(n, r) {
   // 따라서 메모이제이션을 사용하는데 이미 갔던 길에 답을 저장해놓고 재귀로 들어가지 않고도
   // 이미 구해놓은 값을 가져오는 방식이다
   const dy = Array.from(Array(35), () => Array(35).fill(0));
+  // 딱 맞추지 말고 그냥 크게 만들어라
 
   function DFS(n, r) {
     if (dy[n][r] > 0) return dy[n][r];
