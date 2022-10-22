@@ -19,8 +19,6 @@ function solution(n, k, arr, m) {
         check[L] = arr[i];
         DFS(L + 1, sum + arr[i], i + 1);
         // 굳이 start  + 1로 넘겨서 이후에 값을 수정하는 것 보단 그냥 i를 넘기는게..
-        // sum이 최상단 스택 값인 0을 기억하고 있어서 재귀로 호출되어 들어갈 때
-        // 현재 start 값의 + 1로 들어간다
         // ex) L이 0일 때 start가 0이라서 L = 1이 됐을 때 start가 1부터 시작한다
       }
     }
