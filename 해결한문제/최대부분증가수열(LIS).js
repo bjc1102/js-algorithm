@@ -33,12 +33,16 @@ function solution(arr) {
   //     }
   //   }
   const len = arr.length;
+  // 자기자신은 무조건 포함되기때문에 1로 초기화
   const dy = Array.from({ length: arr.length }, () => 1);
   dy[0] = 1;
 
   for (let i = 1; i < len; i++) {
     let max = 0;
     for (let j = i - 1; j >= 0; j--) {
+      // 현재 위치부터 아래로 내려가면서 찾는다
+      // 현재 위치가 최댓값을 가진 숫자 뒤에 올 수 있는 수이면서
+      // 현재까지 가장 긴 값을 찾아서 넣기 위함
       // 수열 조건에 맞는 항이 될 수 있으면서 max값이 바뀌어야 한다
       // for문 조건을 잘 못줘서 헤맸다
       if (arr[j] < arr[i] && dy[j] > max) max = dy[j];
