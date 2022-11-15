@@ -31,9 +31,7 @@ const findBall = function (grid) {
       return -1;
     }
   }
-  for (let i = 0; i < grid[0].length; i++) {
-    answer.push(DFS(0, i));
-  }
+  for (let i = 0; i < grid[0].length; i++) answer.push(DFS(0, i));
 
   return answer;
 };
