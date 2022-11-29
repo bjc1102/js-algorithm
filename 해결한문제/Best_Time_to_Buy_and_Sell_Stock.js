@@ -7,16 +7,15 @@
  * 최솟값과 최댓값을 만들어 저장하고
  */
 var maxProfit = function (prices) {
-  let min = prices[0];
-  let sell = 0;
+  let min = Number.MAX_SAFE_INTEGER;
+  let profit = 0;
 
-  for (let i = 1; i < prices.length; i++) {
-    //최솟값이 나오면 바꾼다
-    min = Math.min(prices[i], min);
-    // 최솟값과 계속해서 이후에 나오는 값들을 비교해나간다
-    sell = Math.max(sell, prices[i] - min);
+  for (const price of prices) {
+    min = Math.min(price, min);
+    profit = Math.max(profit, price - min);
   }
-  return sell;
+
+  return profit;
 };
 
-console.log(maxProfit([7, 1, 5, 3, 6, 4]));
+console.log(maxProfit([7, 6, 4, 3, 1]));
