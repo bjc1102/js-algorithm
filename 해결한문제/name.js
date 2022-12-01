@@ -6,4 +6,6 @@ const parseFileNmae = (str) => {
   return str.split(" ").join("_");
 };
 
-console.log(parseFileNmae("Valid Palindrome") + ".js");
+console.log(
+  parseFileNmae("Lowest Common Ancestor of a Binary Search Tree") + ".js"
+);
