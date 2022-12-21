@@ -96,8 +96,12 @@ var combinationSum = function (candidates, target) {
     if (sum > target) return;
     if (start === candidates.length) return; // 더 탐색할부분이 없다
     buffer.push(candidates[start]);
+    //계속 진행될 수 있으면 진행한다.
     dfs(start, sum + candidates[start]);
+    //계속 진행할 수 없으면 (이전에 리턴값이 있었으면 다음으로 넘어간다)
     buffer.pop();
+    //내가 틀렸던 이유는 모든 후보들을 배열로 돌아가면서 탐색했기 때문이다.
+    //중복되는 부분만 잘 처리할 수 있었으면 쉽게 해결했을 듯?
     dfs(start + 1, sum);
   };
 
