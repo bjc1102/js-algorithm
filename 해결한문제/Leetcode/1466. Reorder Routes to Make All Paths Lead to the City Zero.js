@@ -14,8 +14,8 @@ const minReorder = function(n, connections) {
     for (const [from, to] of connections) {
         if (!graph.has(from)) graph.set(from, []);
         if (!graph.has(to)) graph.set(to, []);
-        graph.get(from).push([to, 1]); // 정방향 연결
-        graph.get(to).push([from, 0]); // 역방향 연결
+        graph.get(from).push([to, 1]); // 정방향 연결(노드에서 나가는 방향)
+        graph.get(to).push([from, 0]); // 역방향 연결(노드에서 들어오는 방향)
     }
 
     let answer = 0;
@@ -30,7 +30,7 @@ const minReorder = function(n, connections) {
         for (const [nextNode, isReversed] of connectedNodes) {
             console.log(nextNode, isReversed)
             if (!visited[nextNode]) {
-                // 방향이 바뀌는 경우 +1
+                // 다음 노드가 아직 방문되지 않았는데 정방향인 경우
                 if (isReversed === 1) {
                     answer++;
                 }
