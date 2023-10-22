@@ -1,0 +1,41 @@
+/**
+ * @param {number} n
+ * @param {number[][]} edges
+ * @param {number} source
+ * @param {number} destination
+ * @return {boolean}
+
+ source에서 destination으로 갈 수 있는지
+ */
+var validPath = function(n, edges, source, destination) {
+    const graph = new Map();
+    edges.forEach(edge => {
+        const [src, dest] = edge;
+        if (!graph.has(src)) {
+            graph.set(src, []);
+        }
+        if (!graph.has(dest)) {
+            graph.set(dest, []);
+        }
+        graph.get(src).push(dest);
+        graph.get(dest).push(src);
+    });
+    
+    const visited = new Set();  // Set을 사용하여 노드 방문 여부를 추적합니다.
+
+    const dfs = (current) => {
+        if (current === destination) return true
+        visited.add(current);
+        for (const nextEdge of graph.get(current)) {
+            if (!visited.has(nextEdge)) {
+                if (dfs(nextEdge)) {
+                    return true;  // 성공적인 경로를 찾았을 때 true 반환
+                }
+            }
+        }
+
+        return false;  // 목적지에 도달하지 못한 경우 false 반환
+    };
+
+    return dfs(source);  // 시작 노드에서 DFS를 시작하고 결과 반환
+};
